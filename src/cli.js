@@ -21,6 +21,8 @@ export async function cli(args) {
         // Get the file paths.
         const fileNames = await getFileNames(inputDirectory);
 
+        console.log(fileNames);
+
         // Optimize the vector images in a temp folder.
         await optimizeVectorImages(fileNames, inputDirectory, temporaryDirectory);
 
@@ -113,7 +115,8 @@ async function getFileNames(inputDirectory) {
                 return reject(error);
             }
 
-            return resolve(files);
+            const filtered = (files || []).filter(fileName => fileName.includes('.svg'));
+            return resolve(filtered);
         });
     });
 }
