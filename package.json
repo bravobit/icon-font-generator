@@ -19,7 +19,6 @@
         "cli",
         "icon-font-generator"
     ],
-    "private": true,
     "dependencies": {
         "arg": "^4.1.3",
         "esm": "^3.2.25",
