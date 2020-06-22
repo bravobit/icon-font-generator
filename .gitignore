@@ -9,6 +9,7 @@ lerna-debug.log*
 # Testing.
 .idea
 icons
+dest
 out
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -27,7 +28,7 @@ lib-cov
 coverage
 *.lcov
 
-# nyc test coverage
+# nyc icons coverage
 .nyc_output
 
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)

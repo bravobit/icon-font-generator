@@ -1,0 +1,104 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time,
+mark, audio, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+html, html a {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+body, input, textarea, select, button {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a, a:visited {
+    color: #2196f3;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+button {
+    cursor: pointer;
+}
+
+label {
+    margin: 0;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+:focus {
+    outline: 0;
+}
+
+[type='checkbox'], [type='radio'] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-weight: normal;
+    font-family: 'icon-font';
+    src: url('./dest/default.eot'),
+    url('./dest/default.eot?#iefix') format('embedded-opentype'),
+    url('./dest/default.woff2') format('woff2'),
+    url('./dest/default.woff') format('woff'),
+    url('./dest/default.ttf') format('truetype');
+}
+
+.icon-font::before {
+    display: flex;
+    direction: ltr;
+    line-height: 1;
+    width: inherit;
+    height: inherit;
+    word-wrap: normal;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: normal;
+    white-space: nowrap;
+    text-transform: none;
+    letter-spacing: normal;
+    vertical-align: middle;
+    content: attr(data-icon);
+    font-feature-settings: 'liga';
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'icon-font', sans-serif;
+}
+
+.test {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    font-size: 250px;
+}

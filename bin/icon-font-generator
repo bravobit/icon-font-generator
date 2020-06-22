@@ -1,4 +1,56 @@
 #!/usr/bin/env node
 
-require = require('esm')(module /*, options*/);
-require('../src/cli').cli(process.argv);
+const ora = require('ora');
+const arg = require('arg');
+const path = require('path');
+const iconFontGenerator = require('../src');
+
+(async function () {
+    const start = Date.now();
+    const spinner = ora('Creating fonts').start();
+    const options = parseArgumentsIntoOptions(process.argv);
+
+    try {
+        if (!options.input || !options.output) {
+            throw new Error('Input and output are required.');
+        }
+
+        const inputDirectory = path.join(process.cwd(), options.input);
+        const outputDirectory = path.join(process.cwd(), options.output);
+
+        await iconFontGenerator({
+            ...options,
+            input: inputDirectory,
+            outputDirectory: outputDirectory
+        });
+
+        if (options.dryRun) {
+            return spinner.info('Dry run, did not create any files.');
+        }
+
+        spinner.succeed(`Successfully created fonts at location ${outputDirectory} (${Date.now() - start}ms)`);
+    } catch (error) {
+        spinner.fail(typeof error === 'string' ? error : error.message);
+    }
+})();
+
+function parseArgumentsIntoOptions(rawArgs) {
+    const args = arg({
+        '--name': String,
+        '--input': String,
+        '--output': String,
+        '--dry-run': Boolean,
+        '-n': '--name',
+        '-i': '--input',
+        '-o': '--output'
+    }, {
+        argv: rawArgs.slice(2)
+    });
+
+    return {
+        name: args['--name'] || null,
+        input: args['--input'] || null,
+        output: args['--output'] || null,
+        dryRun: args['--dry-run'] || false
+    };
+}
