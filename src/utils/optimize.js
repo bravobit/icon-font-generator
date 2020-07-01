@@ -1,7 +1,7 @@
 const {readFile} = require('./files');
 const SVGO = require('svgo');
 
-module.exports.execute = async function (icons) {
+module.exports.execute = async icons => {
     // Create the SVGO object.
     const svgo = getSvgoObject();
 

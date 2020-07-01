@@ -4,30 +4,31 @@ const {generateWoff} = require('./modules/generate-woff');
 const {generateEot} = require('./modules/generate-eot');
 const {generateSvg} = require('./modules/generate-svg');
 const {generateTtf} = require('./modules/generate-ttf');
+const {validate} = require('./utils/validate');
 const {getIcons} = require('./utils/icons');
 const path = require('path');
 
 module.exports = async function iconFontGenerator(options) {
-    const {name, input, output, dryRun} = options;
+    // 1. Validate the options.
+    const {name, input, output, types} = validate(options);
 
-    // 1. Get all the icons in the input directory.
+    // 2. Get all the icons in the input directory.
     const icons = await getIcons(input);
 
-    // 2. Generate the fonts.
+    // 3. Generate the fonts.
     const fontName = name || 'default';
     const svg = await generateSvg(fontName, icons);
     const ttf = await generateTtf(svg.data);
     const woff = await generateWoff(ttf.data);
     const woff2 = await generateWoff2(ttf.data);
     const eot = await generateEot(ttf.data);
+    const values = {svg, ttf, woff, woff2, eot};
 
-    // 3. Write the files.
+    // 4. Write the files.
     await ensureDirectories(output);
-    for (const item of [svg, ttf, woff, woff2, eot]) {
+    const outputValues = types.map(type => values[type]);
+    for (const item of outputValues) {
         const filePath = path.join(output, `${fontName}.${item.ext}`);
-
-        if (!dryRun) {
-            await writeFile(filePath, item.data, item.type);
-        }
+        await writeFile(filePath, item.data, item.type);
     }
 };

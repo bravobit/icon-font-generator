@@ -2,7 +2,7 @@ const SVGIcons2SVGFontStream = require('svgicons2svgfont');
 const optimize = require('../utils/optimize');
 const stream = require('stream');
 
-module.exports.generateSvg = async function (fontName, icons) {
+module.exports.generateSvg = async (fontName, icons) => {
     // Optimize all the icons.
     const optimized = await optimize.execute(icons);
 

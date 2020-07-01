@@ -1,7 +1,7 @@
 const {getFileNames} = require('./files');
 const path = require('path');
 
-module.exports.getIcons = async function (inputDirectory) {
+module.exports.getIcons = async inputDirectory => {
     const fileNames = await getFileNames(inputDirectory);
 
     return fileNames
