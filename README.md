@@ -38,6 +38,7 @@ $ icon-font-generator --i icons --o out --name myfontname
 
 ```javascript
 const iconFontGenerator = require('@bravobit/icon-font-generator');
+const path = require('path');
 
 async function main() {
     const inputDirectory = path.join(process.cwd(), '<input-directory>');
