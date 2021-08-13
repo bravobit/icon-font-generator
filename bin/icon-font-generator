@@ -27,6 +27,7 @@ const iconFontGenerator = require('../src');
 
         spinner.succeed(`Successfully created fonts at location ${outputDirectory} (${Date.now() - start}ms)`);
     } catch (error) {
+        console.log(error);
         spinner.fail(typeof error === 'string' ? error : error.message);
     }
 })();
