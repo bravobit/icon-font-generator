@@ -16,11 +16,11 @@ module.exports.validate = options => {
 
 function validateTypes(types) {
     const validTypes = ['svg', 'ttf', 'woff', 'woff2', 'eot'];
-    const values = types || validTypes;
+    const values = types && types.length > 0 ? types : validTypes;
 
     for (const item of values) {
         if (!validTypes.includes(item)) {
-            throw new Error(`Provided a invalid type "${item}" in the types array.`);
+            throw new Error(`Provided a invalid type "${item}" in the types array. Valid options are: [${validTypes.toString()}]`);
         }
     }
 

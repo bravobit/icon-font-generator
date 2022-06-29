@@ -1,17 +1,15 @@
 #!/usr/bin/env node
 
-const ora = require('ora');
 const arg = require('arg');
 const path = require('path');
 const iconFontGenerator = require('../src');
+const clc = require('cli-color');
 
 (async function () {
-    const start = Date.now();
-    const spinner = ora('Creating fonts').start();
+    console.log(clc.yellow('Creating font kit...'));
 
     try {
         const options = parseArgumentsIntoOptions(process.argv);
-
         if (!options.input || !options.output) {
             throw new Error('Input and output are required.');
         }
@@ -19,16 +17,17 @@ const iconFontGenerator = require('../src');
         const inputDirectory = path.join(process.cwd(), options.input);
         const outputDirectory = path.join(process.cwd(), options.output);
 
-        await iconFontGenerator({
+        const paths = await iconFontGenerator({
             ...options,
             input: inputDirectory,
             output: outputDirectory
         });
 
-        spinner.succeed(`Successfully created fonts at location ${outputDirectory} (${Date.now() - start}ms)`);
+        for (const path of paths) {
+            console.log(clc.blue(`Generated ${path}`));
+        }
     } catch (error) {
-        console.log(error);
-        spinner.fail(typeof error === 'string' ? error : error.message);
+        console.log(clc.red(typeof error === 'string' ? error : error.message));
     }
 })();
 
@@ -37,9 +36,11 @@ function parseArgumentsIntoOptions(rawArgs) {
         '--name': String,
         '--input': String,
         '--output': String,
+        '--type': [String],
         '-n': '--name',
         '-i': '--input',
-        '-o': '--output'
+        '-o': '--output',
+        '-t': '--type'
     }, {
         argv: rawArgs.slice(2)
     });
@@ -47,6 +48,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     return {
         name: args['--name'] || null,
         input: args['--input'] || null,
-        output: args['--output'] || null
+        output: args['--output'] || null,
+        types: args['--type'] || []
     };
 }

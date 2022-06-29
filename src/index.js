@@ -27,8 +27,12 @@ module.exports = async function iconFontGenerator(options) {
     // 4. Write the files.
     await ensureDirectories(output);
     const outputValues = types.map(type => values[type]);
+    const paths = [];
     for (const item of outputValues) {
         const filePath = path.join(output, `${fontName}.${item.ext}`);
+        paths.push(filePath);
         await writeFile(filePath, item.data, item.type);
     }
+
+    return paths;
 };
