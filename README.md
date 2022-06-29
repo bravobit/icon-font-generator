@@ -25,14 +25,15 @@ $ npm install @bravobit/icon-font-generator --save
 ## How to use (command-line)
 
 ```bash
-$ icon-font-generator --i icons --o out --name myfontname
+$ icon-font-generator --input icons --output out --name myfontname
 ```
 
-| Argument | Alt | Description |
-| --- | --- | --- |
-| `--input` | `-i` | The input directory with the SVG icons. |
-| `--output` | `-o` | The output directory for the fonts. |
-| `--name` | `-n` | The name for the font. |
+| Argument   | Alt  | Description                                         |
+|------------|------|-----------------------------------------------------|
+| `--input`  | `-i` | The input directory with the SVG icons.             |
+| `--output` | `-o` | The output directory for the fonts.                 |
+| `--name`   | `-n` | The name for the font.                              |
+| `--type`      | `-t` | The type to generate (can be added multiple times). |
 
 ## How to use (node)
 
@@ -47,7 +48,8 @@ async function main() {
     await iconFontGenerator({
         input: inputDirectory,
         output: outputDirectory,
-        name: '<font-name>'
+        name: '<font-name>',
+        types: ['svg', 'ttf']
     });
 
     console.log('done.');
