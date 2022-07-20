@@ -54,6 +54,8 @@ async function main() {
 
     console.log('done.');
 }
+
+main();
 ```
 
 | Argument | Description | Default value |
