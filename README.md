@@ -33,7 +33,7 @@ $ icon-font-generator --input icons --output out --name myfontname
 | `--input`  | `-i` | The input directory with the SVG icons.             |
 | `--output` | `-o` | The output directory for the fonts.                 |
 | `--name`   | `-n` | The name for the font.                              |
-| `--type`      | `-t` | The type to generate (can be added multiple times). |
+| `--type`   | `-t` | The type to generate (can be added multiple times). |
 
 ## How to use (node)
 
@@ -58,12 +58,12 @@ async function main() {
 main();
 ```
 
-| Argument | Description | Default value |
-| --- | --- | --- |
-| `input` | The input directory with the SVG icons. | n/a |
-| `output` | The output directory for the fonts. | n/a |
-| `name` | The name for the font. | `default` |
-| `types` | The font types that will be created in the output directory. | `['svg', 'ttf', 'woff', 'woff2', 'eot']` |
+| Argument | Description                                                  | Default value                            |
+|----------|--------------------------------------------------------------|------------------------------------------|
+| `input`  | The input directory with the SVG icons.                      | n/a                                      |
+| `output` | The output directory for the fonts.                          | n/a                                      |
+| `name`   | The name for the font.                                       | `default`                                |
+| `types`  | The font types that will be created in the output directory. | `['svg', 'ttf', 'woff', 'woff2', 'eot']` |
 
 ## How to use (CSS)
 
