@@ -32,12 +32,12 @@
     "dependencies": {
         "arg": "^5.0.2",
         "cli-color": "^2.0.4",
-        "fs-extra": "^11.2.0",
+        "fs-extra": "^11.3.3",
         "svg2ttf": "^6.0.3",
-        "svgicons2svgfont": "^12.0.0",
-        "svgo": "^3.3.2",
+        "svgicons2svgfont": "^15.0.1",
+        "svgo": "^4.0.0",
         "ttf2eot": "^3.1.0",
         "ttf2woff": "^3.0.0",
-        "ttf2woff2": "^5.0.0"
+        "ttf2woff2": "^8.0.0"
     }
 }

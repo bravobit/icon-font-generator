@@ -1,4 +1,4 @@
-const SVGIcons2SVGFontStream = require('svgicons2svgfont');
+const {SVGIcons2SVGFontStream} = require('svgicons2svgfont');
 const optimize = require('../utils/optimize');
 const stream = require('stream');
 
@@ -20,7 +20,10 @@ async function getSvgString(fontStream, icons) {
     return new Promise((resolve, reject) => {
         let result = Buffer.from([]);
         fontStream
-            .on('data', data => result = Buffer.concat([result, data]))
+            .on('data', data => {
+                const chunk = Buffer.isBuffer(data) ? data : Buffer.from(String(data));
+                result = Buffer.concat([result, chunk]);
+            })
             .on('error', error => reject(error))
             .on('end', () => resolve(result.toString()));
 
