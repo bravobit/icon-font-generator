@@ -5,9 +5,9 @@ Thank you for contributing! Please fill out the pull request form below.
 ### Checklist
 
 - Issue number for this PR: #nnn (required)
-- Docs included?: (yes/no; required for all API/functional changes) 
-- Test units included?: (yes/no; required) 
-- In a clean directory, `yarn install`, `yarn test` run successfully? (yes/no; required)
+- Docs included?: (yes/no; required for all API/functional changes)
+- Test units included?: (yes/no; required)
+- In a clean directory, `npm install` and `npm run check` run successfully? (yes/no; required)
 
 ### Description
 
